@@ -1,0 +1,13 @@
+#!/bin/bash
+cat << 'EOF'
+EOF
+xtoken="srxxocVh1BLt3v2RfNJV"
+if [[ -n "$xtoken" ]]; then
+y=$(curl -s http://ellis.take-one.world/status/sessions -H "X-Plex-Token: $xtoken")
+transcodes=$(echo -n $y | grep -Fo 'videoDecision="transcode"' | wc -l)
+aa=$(curl -s http://ellis.take-one.world/status/sessions -H "X-Plex-Token: $xtoken" | grep "MediaContainer size")
+total=$(echo $aa | grep -o -E '[0-9]+')
+direct=`expr $total - $transcodes`
+echo "Plex Streams: $transcodes transcodes and $direct direct plays"
+fi
+
