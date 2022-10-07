@@ -11,5 +11,8 @@ chsh -s /bin/zsh
 
 #Cloning dotfiles with chezmoi
 chezmoi init --apply https://github.com/insomniac-afk/dotfiles.git
+
+#Making certain files executable
 chmod +x $HOME/.config/i3/autostart.sh
+chmod +x $HOME/.config/polybar/launch.sh
 
